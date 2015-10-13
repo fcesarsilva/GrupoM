@@ -1,0 +1,13 @@
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+from django.db import models
+
+class Remedio(models.Model):
+	id_Medicamento = models.AutoField(primary_key = True)
+	descricao_Medicamento = models.CharField(max_length = 30)
+
+	def __str__(self):
+           return self.descricao_Medicamento
+# Create your models here.
