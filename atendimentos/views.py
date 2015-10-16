@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from form import PacienteForm
-from django.shortcuts import render_to_response
+from .form import PacienteForm
+
 
 def poslogin(request):
 	
