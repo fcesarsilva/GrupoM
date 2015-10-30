@@ -1,18 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.views.generic.list import ListView
+from django.utils import timezone
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
 from .form import PacienteForm
+from .models import Paciente
+
 
 
 def poslogin(request):
-	
-    return render(request, 'Bem_vindo.html', {})
 
+    if request.user.id:
+     return render(request, 'Bem_vindo.html', {})
+    else:
+        return HttpResponseRedirect("/")
 
 
 def cadastroPaciente(request):
-    # if this is a POST request we need to process the form data
+     
+     
+ if not request.user.id: 
+    return HttpResponseRedirect("/")
+  
+ else:    
+    
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
+              
         form = PacienteForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
@@ -26,3 +40,25 @@ def cadastroPaciente(request):
         form = PacienteForm()
 
     return render(request, 'CadastroPaciente.html', {'form': form})
+   
+
+
+class PacienteListVeiw(ListView):
+
+    model = Paciente
+    def lista(self, **kwargs):
+         
+        list = super (PacienteListVeiw, self)
+        return list        
+        
+
+
+class PacienteUpdate(UpdateView):
+    model = Paciente
+    success_url = '/inicio/lista/'
+    fields = fields = ['nome','cpf','data_Nascimento','sexo','estadoCivil','data_Atendimento','queixaPrincipal',]   
+   
+
+class PacienteDelete(DeleteView):
+    model = Paciente
+    success_url = '/inicio/lista/'

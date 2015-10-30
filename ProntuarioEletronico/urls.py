@@ -18,6 +18,8 @@ from django.contrib import admin
 
 
 urlpatterns = [
+
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
    url(r'', include('funcionarios.urls')),
    url(r'^inicio/', include('atendimentos.urls')),
