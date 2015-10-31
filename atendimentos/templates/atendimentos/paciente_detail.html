@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+
+
+ <div class="hero-unit" >
+
+ 
+
+<div class="btn-group pull-right">
+ <a href="/inicio/lista/" ><button class="btn">Voltar</button></a>
+  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Opções<span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="/inicio/edit/{{ object.cartao_SUS }}">Editar Paciente</a></li>
+    <li class="divider"></li>
+    <li><a href="/inicio/delete/{{ object.cartao_SUS }}">Excluir Paciente</a></li>
+    </ul>
+</div>
+
+
+
+   <div class="page-header">
+     <h1>Dados do Paciente</h1>
+   </div>
+
+        <p><strong>Nome Do Pacientes: </strong>{{ object.nome }}</p>            
+        <p><strong>CPF: </strong>{{ object.cpf }}</p> 
+        <p><strong>Numero do Cartão SUS: </strong>{{ object.cartao_SUS }}</p>  
+        <p><strong>Data de Nascimento: </strong>{{ object.data_Nascimento }}</p>  
+        <p><strong>Sexo: </strong>{{ object.sexo }}</p>             
+        <p><strong>Data do Atendimento: </strong>{{ object.data_Atendimento }}</p>  
+        <p><strong>Estado Civil: </strong>{{ object.estadoCivil }}</p>  
+        <p><strong>Queixa Relatada: </strong>{{ object.queixaPrincipal }}</p>  
+   
+
+                
+  </div>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+     {% endblock content %} 

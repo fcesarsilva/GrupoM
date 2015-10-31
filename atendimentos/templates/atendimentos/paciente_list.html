@@ -5,6 +5,9 @@
 
 <div class="container">
  <div class="hero-unit" >
+
+
+ 
      <h2>Lista de Pacientes</h2>
      <h1></h1>
      <h1></h1>
@@ -15,8 +18,8 @@
                 <tr>
                   <th>Numero do Cartâo SUS</th>
                   <th>Nome</th>
-                  <th></th>
-                  <th></th>
+                  <th>Editar</th>
+                  <th>Excluir</th>
                 </tr>
               </thead>
  <tbody>
@@ -24,7 +27,7 @@
 
 {% for Paciente in object_list %}
 <tr>
-<td><a href="/inicio/edit/{{Paciente.pk}}">{{ Paciente.cartao_SUS }}</a></td>
+<td><a href="/inicio/detail/{{Paciente.pk}}">{{ Paciente.cartao_SUS }}</a></td>
 <td>{{ Paciente.nome}}</td>
 <td><a href="/inicio/edit/{{Paciente.pk}}"><i class="icon-edit"></i></td></a>
 <td> <a  href="/inicio/delete/{{Paciente.pk}}"><i class="icon-remove"></i></a></td>

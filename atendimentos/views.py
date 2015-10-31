@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic.list import ListView
 from django.utils import timezone
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
 from .form import PacienteForm
 from .models import Paciente
@@ -62,3 +63,13 @@ class PacienteUpdate(UpdateView):
 class PacienteDelete(DeleteView):
     model = Paciente
     success_url = '/inicio/lista/'
+
+
+class PacienteDetailView(DetailView):
+
+    model = Paciente
+
+    def Detalhes(self, **kwargs):
+        detalhes = super(PacienteDetailView, self)
+        
+        return detalhes
