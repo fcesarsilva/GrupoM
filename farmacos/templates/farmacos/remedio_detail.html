@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+
+
+ <div class="hero-unit" >
+
+ 
+
+<div class="btn-group pull-right">
+ <a href="/remedio/lista/" ><button class="btn">Voltar</button></a>
+  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Opções<span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="/remedio/edit/{{ object.id_Medicamento }}">Editar Medicamento</a></li>
+    <li class="divider"></li>
+    <li><a href="/remedio/delete/{{ object.id_Medicamento }}">Excluir Medicamento</a></li>
+    </ul>
+</div>
+
+
+
+   <div class="page-header">
+     <h1>Dados do Medicamento</h1>
+   </div>
+
+        <p><strong>Codigo do Medicamento: </strong>{{ object.id_Medicamento }}</p>
+        <p><strong>Medicamento : </strong>{{ object.descricao_Medicamento}}</p>            
+        
+   
+
+                
+  </div>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+     {% endblock content %} 

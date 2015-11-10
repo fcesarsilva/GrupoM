@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+ <div class="hero-unit" >
+
+
+ 
+     <h2>Lista de Remedios</h2>
+     <h1></h1>
+     <h1></h1>
+
+<table class="table table-striped">
+
+<thead>
+                <tr>
+                  <th>Codigo</th>
+                  <th>Nome Do Remedio</th>
+                  <th>Editar</th>
+                  <th>Excluir</th>
+                </tr>
+              </thead>
+ <tbody>
+
+
+{% for Remedio in object_list %}
+<tr>
+<td><a href="/remedio/detail/{{Remedio.pk}}">{{ Remedio.id_Medicamento }}</a></td>
+<td>{{ Remedio.descricao_Medicamento}}</td>
+<td><a href="/remedio/edit/{{Remedio.pk}}"><i class="icon-edit"></i></td></a>
+<td> <a  href="/remedio/delete/{{Remedio.pk}}"><i class="icon-remove"></i></a></td>
+</tr>
+{% endfor %}
+<tbody>
+</table>
+
+     {% endblock content %} 

@@ -1,0 +1,13 @@
+from django.conf.urls import include, url
+from . import views
+
+
+urlpatterns = [
+    
+      url(r'lista/$', RemedioListVeiw.as_view(), name='remedio-list'),
+
+
+
+
+
+]

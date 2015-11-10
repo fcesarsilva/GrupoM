@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+ <div class="hero-unit" >
+     <h2>Cadastro de Medicamento</h2>
+     <h1></h1>
+     <h1></h1>
+
+     
+    <form action="remedio/cadastro/" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <br></br>
+                <button type="submit">Registrar Novo Medicamento</button>
+        </form>
+  </div>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+     {% endblock content %} 
