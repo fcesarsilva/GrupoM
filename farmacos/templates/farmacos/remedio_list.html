@@ -11,8 +11,15 @@
      <h2>Lista de Remedios</h2>
      <h1></h1>
      <h1></h1>
-
+{% csrf_token %}
+    <form class="form-search" name="pesquisa" action="/inicio/buscar/" method="POST">
+          <div class="input-append">
+            <input class="span2" id="appendedInputButton" type="text">
+            <button class="btn" type="button"><i class="icon-search"></i></button>
+         </div>
+    </form>
 <table class="table table-striped">
+
 
 <thead>
                 <tr>

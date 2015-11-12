@@ -32,4 +32,32 @@ def cadastroProntuario(request):
 
     return render(request, 'cadastroProntuario.html', {'prontuario': form})
 
-# Create your views here.
+
+
+class ProntuarioListVeiw(ListView):
+
+    model = Prontuario
+    def lista(self, **kwargs):
+         
+        list = super (ProntuarioListVeiw, self)
+        return list 
+
+class ProntuarioUpdate(UpdateView):
+    model = Prontuario
+    success_url = '/prontuario/lista/'
+    fields = fields = ['data_Consulta','paciente','medico','remedio',]   
+   
+
+class ProntuarioDelete(DeleteView):
+    model = Prontuario
+    success_url = '/prontuario/lista/'
+
+
+class ProntuarioDetailView(DetailView):
+
+    model = Prontuario
+
+    def Detalhes(self, **kwargs):
+        detalhes = super(ProntuarioDetailView, self)
+        
+        return detalhes          

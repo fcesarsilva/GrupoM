@@ -11,12 +11,19 @@
      <h2>Lista de Pacientes</h2>
      <h1></h1>
      <h1></h1>
+    {% csrf_token %}
+    <form class="form-search" name="pesquisa" action="/inicio/buscar/" method="POST">
+          <div class="input-append">
+            <input class="span2" id="appendedInputButton" type="text">
+            <button class="btn" type="button"><i class="icon-search"></i></button>
+         </div>
+    </form>
 
 <table class="table table-striped">
 
 <thead>
                 <tr>
-                  <th>Numero do Cartâo SUS</th>
+                  <th>Numero do Cartão SUS</th>
                   <th>Nome</th>
                   <th>Editar</th>
                   <th>Excluir</th>
@@ -24,13 +31,13 @@
               </thead>
  <tbody>
 
-
+{% csrf_token %}
 {% for Paciente in object_list %}
 <tr>
 <td><a href="/inicio/detail/{{Paciente.pk}}">{{ Paciente.cartao_SUS }}</a></td>
 <td>{{ Paciente.nome}}</td>
 <td><a href="/inicio/edit/{{Paciente.pk}}"><i class="icon-edit"></i></td></a>
-<td> <a  href="/inicio/delete/{{Paciente.pk}}"><i class="icon-remove"></i></a></td>
+<td> <a  href="/inicio/delete/{{Paciente.pk}}" class="icon-remove"></i></a></td>
 </tr>
 {% endfor %}
 <tbody>

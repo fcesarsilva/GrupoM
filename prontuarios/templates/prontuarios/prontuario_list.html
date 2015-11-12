@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+ <div class="hero-unit" >
+
+
+ 
+     <h2>Prontuarios</h2>
+     <h1></h1>
+     <h1></h1>
+    {% csrf_token %}
+    <form class="form-search" name="pesquisa" action="/inicio/buscar/" method="POST">
+          <div class="input-append">
+            <input class="span2" id="appendedInputButton" type="text">
+            <button class="btn" type="button"><i class="icon-search"></i></button>
+         </div>
+    </form>
+
+<table class="table table-striped">
+
+<thead>
+                <tr>
+                  <th>Codigo</th>
+                  <th>Nome do Paciente</th>
+                  <th>Imprimir</th>
+                  <th>Editar</th>
+                  <th>Excluir</th>
+                </tr>
+              </thead>
+ <tbody>
+
+{% csrf_token %}
+{% for prontuario in object_list %}
+<tr>
+<td><a href="/prontuario/detail/{{prontuario.codigo_Prontuario}}">
+{{ prontuario.codigo_Prontuario }}</a></td>
+<td><a href="/inicio/detail/{{prontuario.paciente.pk}}">{{ prontuario.paciente.nome}}</td>
+<td><a href="/prontuario/print/{{prontuario.codigo_Prontuario}}" ><i class="icon-print"></i></td></a>
+<td><a href="/prontuario/edit/{{prontuario.codigo_Prontuario}}"><i class="icon-edit"></i></td></a>
+<td> <a  href="/prontuario/delete/{{prontuario.codigo_Prontuario}}" class="icon-remove"></i></a></td>
+</tr>
+{% endfor %}
+<tbody>
+</table>
+
+     {% endblock content %} 

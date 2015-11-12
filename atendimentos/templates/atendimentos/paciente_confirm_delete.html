@@ -5,7 +5,7 @@
 
 <div class="container">
  <div class="hero-unit" >
-     <h2>Tem certeza que deseja deletar o Paciente {{ form.pk }}?</h2>
+     <h2>Tem certeza que deseja excluir o Paciente {{ object.nome }}?</h2>
      <h1></h1>
      <h1></h1>
 
@@ -14,15 +14,13 @@
                 {% csrf_token %}
                 {{ form.as_p }}
 
-            <button type="submit">Excluir Paciente</button>
+            <button  class="btn btn-large" type="submit">Sim</button>
+            <a href="/inicio/lista"><button class="btn btn-large" type="button">Não</button></a>
         </form> 
+
 
   </div>  
-<form action="/inicio/lista" method="GET">
-               
 
-            <button type="submit">Voltar</button>
-        </form> 
 
 
 </div>

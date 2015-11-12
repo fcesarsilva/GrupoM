@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*- #colocar esta declaração para que seja permitido palavras acentuadas e cedilhas
 
 from django.db import models
+
 #from django_localflavor_br.forms import BRCPFField
 
 

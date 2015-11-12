@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
+from django.shortcuts import render_to_response
 from .form import PacienteForm
 from .models import Paciente
 
@@ -73,3 +74,15 @@ class PacienteDetailView(DetailView):
         detalhes = super(PacienteDetailView, self)
         
         return detalhes
+
+
+def search(request):
+     
+     if request.method == "POST":
+         search_text = request.POST['pesquisa']
+     else:
+        search_text = ''
+
+     paciente = Paciente.objects.filter(nome__contains=search_text)   
+
+     return render(request,'atendimentos/paciente_list.html',{'Paciente':paciente})
