@@ -15,7 +15,16 @@ from .form import RemedioForm
 class RemedioListVeiw(ListView):
 
     model = Remedio
-    def lista(self, **kwargs):
+    
+    def get_queryset(self):
+
+        remedio = Remedio.objects.all()
+        q = self.request.GET.get('search_box')
+
+        # Buscar por remedio
+        if q is not None:
+            remedio = Remedio.objects.filter(descricao_Medicamento__contains=q)
+        return remedio
          
         list = super (RemedioListVeiw, self)
         return list 

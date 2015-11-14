@@ -14,11 +14,11 @@
  <a href="/prontuario/lista/" ><button class="btn">Voltar</button></a>
   <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Opções<span class="caret"></span></button>
   <ul class="dropdown-menu">
-    <li><a href="/inicio/edit/{{ object.cartao_SUS }}">Editar Prontuario</a></li>
+    <li><a href="/prontuario/edit/{{object.codigo_Prontuario}}">Editar Prontuario</a></li>
     <li class="divider"></li>
-    <li><a href="/inicio/delete/{{ object.cartao_SUS }}">Excluir Prontuario</a></li>
+    <li><a href="/prontuario/delete/{{object.codigo_Prontuario}}">Excluir Prontuario</a></li>
     <li class="divider"></li>
-    <li><a href="#">Imprimir Prontuario</a></li>
+    <li><a href="#" target="_blank">Imprimir Prontuario</a></li>
     <li class="divider"></li>
     <li><a href="#">Historico</a></li>
     </ul>
@@ -37,12 +37,21 @@
         <p><strong>CPF: </strong>{{ object.paciente.cpf }}</p> 
         <p><strong>Numero do Cartão SUS: </strong>{{ object.paciente.cartao_SUS }}</p> 
         <p><strong>Queixa Relatada: </strong>{{ object.paciente.queixaPrincipal }}</p> 
+        
+        <hr size="10"> 
+        
+        {% for medico in object.medico.all %}
+        <p><strong>Medico: </strong>{{medico.nome}}</p>  
+        <p><strong>CRM: </strong>{{medico.CRM }}</p>             
+        <p><strong>Espcialidade do Medico: </strong>{{medico.especialidade }}</p> 
+        {% endfor %} 
+        
+        
         <hr size="10">  
-        <p><strong>Medico: </strong>{{ object.medico.nome}}</p>  
-        <p><strong>CRM: </strong>{{ object.medico.CRM }}</p>             
-        <p><strong>Espcialidade do Medico: </strong>{{ object.medico.especialidade }}</p>  
-        <hr size="10">  
-        <p><strong>Remedios: </strong>{{ object.remedio.descricao_Medicamento}}</p> 
+        <p><strong>Remedios: </strong></p> 
+        {% for remedio in object.remedio.all %}
+        <p>{{remedio.descricao_Medicamento}}</p>
+        {% endfor %} 
         <hr size="10"> 
 
                 

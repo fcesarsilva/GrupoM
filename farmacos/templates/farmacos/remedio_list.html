@@ -12,10 +12,10 @@
      <h1></h1>
      <h1></h1>
 {% csrf_token %}
-    <form class="form-search" name="pesquisa" action="/inicio/buscar/" method="POST">
+    <form class="form-search" name="pesquisar" id="pesquisar" action="/remedio/lista/" method="GET">
           <div class="input-append">
-            <input class="span2" id="appendedInputButton" type="text">
-            <button class="btn" type="button"><i class="icon-search"></i></button>
+            <input id="search_box" name="search_box" type="text" placeholder="Pesquisar..." class="form-control">
+             <button class="btn" type="button"><i class="icon-search"></i></button>
          </div>
     </form>
 <table class="table table-striped">

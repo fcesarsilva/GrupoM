@@ -12,10 +12,10 @@
      <h1></h1>
      <h1></h1>
     {% csrf_token %}
-    <form class="form-search" name="pesquisa" action="/inicio/buscar/" method="POST">
+    <form class="form-search" name="pesquisar" id="pesquisar" action="/prontuario/lista/" method="GET">
           <div class="input-append">
-            <input class="span2" id="appendedInputButton" type="text">
-            <button class="btn" type="button"><i class="icon-search"></i></button>
+            <input id="search_box" name="search_box" type="text" placeholder="Pesquisar..." class="form-control">
+             <button class="btn" type="button"><i class="icon-search"></i></button>
          </div>
     </form>
 
@@ -38,7 +38,7 @@
 <td><a href="/prontuario/detail/{{prontuario.codigo_Prontuario}}">
 {{ prontuario.codigo_Prontuario }}</a></td>
 <td><a href="/inicio/detail/{{prontuario.paciente.pk}}">{{ prontuario.paciente.nome}}</td>
-<td><a href="/prontuario/print/{{prontuario.codigo_Prontuario}}" ><i class="icon-print"></i></td></a>
+<td><a href="#" ><i class="icon-print"></i></td></a>
 <td><a href="/prontuario/edit/{{prontuario.codigo_Prontuario}}"><i class="icon-edit"></i></td></a>
 <td> <a  href="/prontuario/delete/{{prontuario.codigo_Prontuario}}" class="icon-remove"></i></a></td>
 </tr>

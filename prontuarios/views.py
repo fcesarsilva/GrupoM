@@ -4,8 +4,11 @@ from django.views.generic.list import ListView
 from django.utils import timezone
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .form import ProntuarioForm
 from .models import Prontuario
+
 
 
 def cadastroProntuario(request):
@@ -35,9 +38,17 @@ def cadastroProntuario(request):
 
 
 class ProntuarioListVeiw(ListView):
-
+ 
     model = Prontuario
-    def lista(self, **kwargs):
+    
+    def get_queryset(self):
+        prontuario = Prontuario.objects.all()
+        q = self.request.GET.get('search_box')
+
+        # Buscar por Prontuario
+        if q is not None:
+            prontuario = Prontuario.objects.filter(paciente__nome__contains=q)
+        return prontuario
          
         list = super (ProntuarioListVeiw, self)
         return list 
@@ -60,4 +71,4 @@ class ProntuarioDetailView(DetailView):
     def Detalhes(self, **kwargs):
         detalhes = super(ProntuarioDetailView, self)
         
-        return detalhes          
+        return detalhes         

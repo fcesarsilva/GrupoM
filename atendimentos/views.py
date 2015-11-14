@@ -48,12 +48,20 @@ def cadastroPaciente(request):
 class PacienteListVeiw(ListView):
 
     model = Paciente
-    def lista(self, **kwargs):
+    
          
+    def get_queryset(self):
+        paciente = Paciente.objects.all()
+        q = self.request.GET.get('search_box')
+
+        # Buscar por Paciente
+        if q is not None:
+            paciente = Paciente.objects.filter(nome__contains=q)
+        return paciente
+
         list = super (PacienteListVeiw, self)
         return list        
         
-
 
 class PacienteUpdate(UpdateView):
     model = Paciente
