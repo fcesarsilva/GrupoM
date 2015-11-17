@@ -43,4 +43,60 @@
 <tbody>
 </table>
 
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+  // executar quando uma tecla esta apertada no input com class "keywords"
+  
+  $(".keywords").keyup(function (e) {
+    if ($(".keywords").val().length > 2) {
+      // se tem mais de 2 caracteros, pode iniciar o ajax
+      
+      var url = '/inicio/buscar/'
+      var data = {keywords: $(".keywords").val()};
+      
+      // ajax call
+      
+      $.ajax({
+        dataType: "json",
+        url: url,
+        type: "POST",
+        data: data,
+        success: function (data) {
+           $("div#content").empty()
+
+           var html_result =  "<table class=\"table table-condensed\">";
+           html_result += "<tr>";
+           html_result += "<th>Usuario</th>";
+           html_result += "<th>SUS</th>";
+           html_result += "</tr>";
+           $.each(data, function () {
+            html_result += "<tr>";
+            html_result += "<td>" + this.id_usuario + "</td>";
+            html_result += "<td>" + this.nome + "</td>";
+            html_result += "<td>" + this.sus + "</td>";
+            html_result += "</tr>";
+           });
+           html_result += "</table>";
+           $("div#content").append(html_result);
+        },
+        error: function (response) {
+          console.log("AJAX ERROR");
+        }
+      });
+    }
+  });
+  
+}); 
+</script>
+
+
+
+
+
+
      {% endblock content %} 

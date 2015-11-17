@@ -2,15 +2,18 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic.list import ListView
 from django.utils import timezone
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render_to_response
+from django.contrib.auth.decorators import login_required
+
+from core.views import LoginRequiredMixin
 from .form import PacienteForm
 from .models import Paciente
 
 
-
+@login_required(login_url='/')
 def poslogin(request):
 
     if request.user.id:
@@ -19,6 +22,7 @@ def poslogin(request):
         return HttpResponseRedirect("/")
 
 
+@login_required(login_url='/')
 def cadastroPaciente(request):
      
      
@@ -45,7 +49,7 @@ def cadastroPaciente(request):
    
 
 
-class PacienteListVeiw(ListView):
+class PacienteListVeiw(LoginRequiredMixin,ListView):
 
     model = Paciente
     
@@ -63,18 +67,18 @@ class PacienteListVeiw(ListView):
         return list        
         
 
-class PacienteUpdate(UpdateView):
+class PacienteUpdate(LoginRequiredMixin,UpdateView):
     model = Paciente
     success_url = '/inicio/lista/'
     fields = fields = ['nome','cpf','data_Nascimento','sexo','estadoCivil','data_Atendimento','queixaPrincipal',]   
    
 
-class PacienteDelete(DeleteView):
+class PacienteDelete(LoginRequiredMixin,DeleteView):
     model = Paciente
     success_url = '/inicio/lista/'
 
 
-class PacienteDetailView(DetailView):
+class PacienteDetailView(LoginRequiredMixin,DetailView):
 
     model = Paciente
 
@@ -83,7 +87,7 @@ class PacienteDetailView(DetailView):
         
         return detalhes
 
-
+@login_required(login_url='/')
 def search(request):
      
      if request.method == "POST":
@@ -94,3 +98,5 @@ def search(request):
      paciente = Paciente.objects.filter(nome__contains=search_text)   
 
      return render(request,'atendimentos/paciente_list.html',{'Paciente':paciente})
+
+

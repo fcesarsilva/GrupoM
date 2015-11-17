@@ -6,11 +6,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from core.views import LoginRequiredMixin
 from .form import ProntuarioForm
 from .models import Prontuario
 
 
-
+@login_required
 def cadastroProntuario(request):
      
      
@@ -37,7 +38,7 @@ def cadastroProntuario(request):
 
 
 
-class ProntuarioListVeiw(ListView):
+class ProntuarioListVeiw(LoginRequiredMixin,ListView):
  
     model = Prontuario
     
@@ -53,18 +54,18 @@ class ProntuarioListVeiw(ListView):
         list = super (ProntuarioListVeiw, self)
         return list 
 
-class ProntuarioUpdate(UpdateView):
+class ProntuarioUpdate(LoginRequiredMixin,UpdateView):
     model = Prontuario
     success_url = '/prontuario/lista/'
     fields = fields = ['data_Consulta','paciente','medico','remedio',]   
    
 
-class ProntuarioDelete(DeleteView):
+class ProntuarioDelete(LoginRequiredMixin,DeleteView):
     model = Prontuario
     success_url = '/prontuario/lista/'
 
 
-class ProntuarioDetailView(DetailView):
+class ProntuarioDetailView(LoginRequiredMixin,DetailView):
 
     model = Prontuario
 

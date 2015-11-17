@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.utils import timezone
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
+from core.views import LoginRequiredMixin
 from .models import Remedio
 from .form import RemedioForm
 # Create your views here.
@@ -12,7 +13,7 @@ from .form import RemedioForm
 
 
 
-class RemedioListVeiw(ListView):
+class RemedioListVeiw(LoginRequiredMixin,ListView):
 
     model = Remedio
     
@@ -28,6 +29,7 @@ class RemedioListVeiw(ListView):
          
         list = super (RemedioListVeiw, self)
         return list 
+
 
 
 def cadastroRemedio(request):
@@ -55,18 +57,18 @@ def cadastroRemedio(request):
     return render(request, 'RemedioPaciente.html', {'form': form})
 
 
-class RemedioUpdate(UpdateView):
+class RemedioUpdate(LoginRequiredMixin,UpdateView):
     model = Remedio
     success_url = '/remedio/lista/'
     fields = fields = ['descricao_Medicamento',]
 
 
-class RemedioDelete(DeleteView):
+class RemedioDelete(LoginRequiredMixin,DeleteView):
     model = Remedio
     success_url = '/remedio/lista/'    
 
 
-class RemedioDetailView(DetailView):
+class RemedioDetailView(LoginRequiredMixin,DetailView):
 
     model = Remedio
 

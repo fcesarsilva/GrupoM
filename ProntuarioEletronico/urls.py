@@ -19,11 +19,11 @@ from django.contrib import admin
 
 urlpatterns = [
 
-    url(r'^grappelli/', include('grappelli.urls')),
+    
     url(r'^admin/', include(admin.site.urls)),
-   url(r'', include('funcionarios.urls')),
-   url(r'^inicio/', include('atendimentos.urls')),
-   url(r'^remedio/', include('farmacos.urls')),
-   url(r'^prontuario/', include('prontuarios.urls')),
+    url(r'', include('funcionarios.urls')),
+    url(r'^inicio/', include('atendimentos.urls')),
+    url(r'^remedio/', include('farmacos.urls')),
+    url(r'^prontuario/', include('prontuarios.urls')),
    
 ]

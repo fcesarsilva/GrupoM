@@ -9,6 +9,7 @@
     <meta name="Alessandro" content="">
     
     <!-- Le styles -->
+    {{ form.media }}
     <link href="http://globocom.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -144,13 +145,15 @@
    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="assets/datepicker/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="assets/datepicker/js/bootstrap-datepicker.pt-BR.js"></script>
-    <script type="text/javascript">
-$(function(){
-    var options = new Array();
-    options['language'] = 'pt-BR';
-    $('.datepicker').datepicker(options);
-})
-</script>
+    
+  
+    {% if multiple %}
+        <script type="text/javascript">
+            addEvent(window, "load", function(e) {
+                SelectFilter.init("id_{{ field }}", "{{ field }}", 0, "/media/");
+            });
+        </script>
+    {% endif %}
 
 
 

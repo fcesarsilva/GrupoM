@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'delete/(?P<pk>\d+)$', views.PacienteDelete.as_view(), name='paciente_delete'),
     url(r'detail/(?P<pk>[-\w]+)/$', PacienteDetailView.as_view(), name='paciente-detail'),
    url(r'buscar/$', views.search),
+   
    ]

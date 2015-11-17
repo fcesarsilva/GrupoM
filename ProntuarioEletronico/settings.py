@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'bk&o-deh@$nhe%eqg6_m)dl@qlp1#*3j2^uaw#t2c24lu!o^)d'
+LOGIN_URL          = '/'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-     'grappelli',
+     
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
