@@ -8,12 +8,8 @@ class Prontuario(models.Model):
         codigo_Prontuario = models.IntegerField()
         data_Consulta = models.DateField()
         paciente = models.ForeignKey(Paciente)
-<<<<<<< HEAD
         medico = models.ManyToManyField(Medico)
         remedio = models.ManyToManyField(Remedio)
-=======
-        medico = models.ManyToManyField(Medico)
-        remedio = models.ManyToManyField(Remedio)
+	
+	
 
-# Create your models here.
->>>>>>> 8497c1daba2a631da3da337431cca63e4b234faa
