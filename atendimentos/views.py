@@ -39,7 +39,7 @@ def cadastroPaciente(request):
             # process the data in form.cleaned_data as required
             form.save()
             # redirect to a new URL:
-            return HttpResponseRedirect('/inicio/')
+            return HttpResponseRedirect('/inicio/lista')
 
     # if a GET (or any other method) we'll create a blank form
     else:
