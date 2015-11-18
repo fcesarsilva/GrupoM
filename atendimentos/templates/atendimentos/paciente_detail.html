@@ -14,11 +14,17 @@
  <a href="/inicio/lista/" ><button class="btn">Voltar</button></a>
   <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Opções<span class="caret"></span></button>
   <ul class="dropdown-menu">
+  {% if perms.atendimentos.change_paciente%}
     <li><a href="/inicio/edit/{{ object.cartao_SUS }}">Editar Paciente</a></li>
-    <li class="divider"></li>
+  {% endif %}  
+    {% if perms.atendimentos.delete_paciente%}
+    <li class="divider"></li> 
     <li><a href="/inicio/delete/{{ object.cartao_SUS }}">Excluir Paciente</a></li>
     <li class="divider"></li>
+    {% endif %}
+    {% if perms.prontuarios%}
     <li><a href="#">Prontuarios</a></li>
+    {% endif %}
     </ul>
 </div>
 

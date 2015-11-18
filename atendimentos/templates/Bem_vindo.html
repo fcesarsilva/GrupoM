@@ -18,17 +18,23 @@
           <h2>Lista de Paciente</h2>
           <p>Acessar a lista de pacientes, ja cadastrador no sistema.
 		  Podendo atualizar as formações do paciente e cadastrar um novo paciente. </p>
+      {% if perms.atendimentos%}
           <p><a class="btn" href="/inicio/lista">Acessar agora &raquo;</a></p>
+      {% endif %}    
         </div>
         <div class="span4">
           <h2>Prontuarios</h2>
           <p>Acessar a lista de Prontuarios, ja cadastrados no sistema com todas as informações dos pacientes.</p>
+          {% if perms.prontuarios%}
           <p><a class="btn" href="/prontuario/lista/">Acessar agora &raquo;</a></p>
+          {% endif %}
        </div>
         <div class="span4">
           <h2>Remedios</h2>
           <p>acessa a lista de remedios cadastrados, no sistema.</p>
+          {% if perms.farmacos%}
           <p><a class="btn" href="/remedio/lista/">Acessar agora &raquo;</a></p>
+          {% endif %}
         </div>
       </div>
 

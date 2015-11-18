@@ -9,7 +9,7 @@
      <h1></h1>
      <h1></h1>
 
-     
+     {% if perms.atendimentos.delete_paciente%}
     <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -17,7 +17,7 @@
             <button  class="btn btn-large" type="submit">Sim</button>
             <a href="/inicio/lista"><button class="btn btn-large" type="button">Não</button></a>
         </form> 
-
+   {% endif %}
 
   </div>  
 

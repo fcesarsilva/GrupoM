@@ -25,21 +25,30 @@
                 <tr>
                   <th>Numero do Cartão SUS</th>
                   <th>Nome</th>
+                  {% if perms.atendimentos.change_paciente%}
                   <th>Editar</th>
+                  {% endif %}
+                  {% if perms.atendimentos.delete_paciente%}
                   <th>Excluir</th>
+                  {% endif %}
                 </tr>
               </thead>
  <tbody>
-
+{% if perms.atendimentos%}
 {% csrf_token %}
 {% for Paciente in object_list %}
 <tr>
 <td><a href="/inicio/detail/{{Paciente.pk}}">{{ Paciente.cartao_SUS }}</a></td>
 <td>{{ Paciente.nome}}</td>
+{% if perms.atendimentos.change_paciente%}
 <td><a href="/inicio/edit/{{Paciente.pk}}"><i class="icon-edit"></i></td></a>
+{% endif %}
+{% if perms.atendimentos.delete_paciente%}
 <td> <a  href="/inicio/delete/{{Paciente.pk}}" class="icon-remove"></i></a></td>
+{% endif %}
 </tr>
 {% endfor %}
+{% endif %}
 <tbody>
 </table>
 

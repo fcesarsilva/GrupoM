@@ -53,33 +53,47 @@
             <ul class="nav">
               <li><a href="/inicio">Inicio</a></li>
 
+{% if perms.atendimentos%}
 			  <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente<b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                {% if perms.atendimentos.add_paciente%}
                   <li><a href="/inicio/cadastro">Novo Paciente</a></li>
                   <li class="divider"></li>
+                  {% endif %}
                   <li><a href="/inicio/lista">Lista de Pacientes</a></li>
                 </ul>
               </li>
+{% endif %}
+
+  {% if perms.prontuarios%}
 
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Prontuario<b class="caret"></b></a>
+                {% if perms.prontuarios.add_prontuario%}
                 <ul class="dropdown-menu">
                   <li><a href="/prontuario/cadastro/">Novo Prontuario</a></li>
                   <li class="divider"></li>
+                {% endif %}
                   <li><a href="/prontuario/lista">Lista de Prontuarios</a></li>
                 </ul>
               </li>
+  {% endif %}
 
+
+  {% if perms.farmacos%}
 			  <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Remedios<b class="caret"></b></a>
+                
                 <ul class="dropdown-menu">
+                {% if perms.farmacos.add_remedio%}
                   <li><a href="/remedio/cadastro/">Novo Remedios</a></li>
-                  <li class="divider"></li>
+                  <li class="divider"></li>  
+                {% endif %}                  
                   <li><a href="/remedio/lista/">Lista de Remedios</a></li>
                   </ul>
               </li>
-
+{% endif %}
             </ul>
             <form class="navbar-form pull-right">
 			<div class="nav-collapse collapse">

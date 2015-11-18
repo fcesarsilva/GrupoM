@@ -7,6 +7,7 @@ from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 
 from core.views import LoginRequiredMixin
 from .form import PacienteForm
@@ -24,12 +25,11 @@ def poslogin(request):
 
 @login_required(login_url='/')
 def cadastroPaciente(request):
+ 
+    if not request.user.has_perm('atendimentos.add_paciente'):
+            return HttpResponseRedirect("/")
      
-     
- if not request.user.id: 
-    return HttpResponseRedirect("/")
-  
- else:    
+          
     
     if request.method == 'POST':
               
@@ -55,6 +55,8 @@ class PacienteListVeiw(LoginRequiredMixin,ListView):
     
          
     def get_queryset(self):
+        if not self.request.user.has_perm('atendimentos.change_paciente'):
+            raise PermissionDenied
         paciente = Paciente.objects.all()
         q = self.request.GET.get('search_box')
 
@@ -72,10 +74,14 @@ class PacienteUpdate(LoginRequiredMixin,UpdateView):
     success_url = '/inicio/lista/'
     fields = fields = ['nome','cpf','data_Nascimento','sexo','estadoCivil','data_Atendimento','queixaPrincipal',]   
    
+    
 
 class PacienteDelete(LoginRequiredMixin,DeleteView):
     model = Paciente
     success_url = '/inicio/lista/'
+    
+
+
 
 
 class PacienteDetailView(LoginRequiredMixin,DetailView):
@@ -83,20 +89,26 @@ class PacienteDetailView(LoginRequiredMixin,DetailView):
     model = Paciente
 
     def Detalhes(self, **kwargs):
-        detalhes = super(PacienteDetailView, self)
         
-        return detalhes
+            detalhes = super(PacienteDetailView, self)
+        
+            return detalhes
+
 
 @login_required(login_url='/')
 def search(request):
-     
-     if request.method == "POST":
-         search_text = request.POST['pesquisa']
-     else:
-        search_text = ''
 
-     paciente = Paciente.objects.filter(nome__contains=search_text)   
+    if not request.user.has_perm('atendimentos'):
+            return HttpResponseRedirect("/")
+    else: 
 
-     return render(request,'atendimentos/paciente_list.html',{'Paciente':paciente})
+        if request.method == "POST":
+             search_text = request.POST['pesquisa']
+        else:
+            search_text = ''
+
+            paciente = Paciente.objects.filter(nome__contains=search_text)   
+
+        return render(request,'atendimentos/paciente_list.html',{'Paciente':paciente})
 
 
