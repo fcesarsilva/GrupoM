@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Imprimir Prontuario</title>
+   
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+
+<div class="container">
+
+
+ <div class="hero-unit" >
+
+ 
+
+
+
+
+
+   <div class="page-header">
+     <h1>Prontuario Eletronico</h1>
+   </div>
+        <hr size="1"> 
+        <p><strong>Codigo do Prontuario: </strong>{{ object.codigo_Prontuario}}</p>  
+        <p><strong>Data da Consulta: </strong>{{ object.data_Consulta}}</p> 
+        <hr size="1"> 
+        <p><strong>Nome Do Pacientes: </strong>{{ object.paciente.nome }}</p>            
+        <p><strong>CPF: </strong>{{ object.paciente.cpf }}</p> 
+        <p><strong>Numero do Cartão SUS: </strong>{{ object.paciente.cartao_SUS }}</p> 
+        <p><strong>Queixa Relatada: </strong>{{ object.paciente.queixaPrincipal }}</p> 
+        
+        <hr size="10"> 
+        
+        {% for medico in object.medico.all %}
+        <p><strong>Medico: </strong>{{medico.nome}}</p>  
+        <p><strong>CRM: </strong>{{medico.CRM }}</p>             
+        <p><strong>Espcialidade do Medico: </strong>{{medico.especialidade }}</p> 
+        {% endfor %} 
+        
+        
+        <hr size="10">  
+        <p><strong>Remedios: </strong></p> 
+        {% for remedio in object.remedio.all %}
+        <p>{{remedio.descricao_Medicamento}}</p>
+        {% endfor %} 
+        <hr size="10"> 
+
+                
+  </div>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+         <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

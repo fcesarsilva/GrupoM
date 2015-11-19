@@ -38,7 +38,7 @@
 <td><a href="/prontuario/detail/{{prontuario.codigo_Prontuario}}">
 {{ prontuario.codigo_Prontuario }}</a></td>
 <td><a href="/inicio/detail/{{prontuario.paciente.pk}}">{{ prontuario.paciente.nome}}</td>
-<td><a href="#" ><i class="icon-print"></i></td></a>
+<td><a href="/prontuario/print/{{prontuario.codigo_Prontuario}}" target="_blank"><i class="icon-print"></i></td></a>
 <td><a href="/prontuario/edit/{{prontuario.codigo_Prontuario}}"><i class="icon-edit"></i></td></a>
 <td> <a  href="/prontuario/delete/{{prontuario.codigo_Prontuario}}" class="icon-remove"></i></a></td>
 </tr>

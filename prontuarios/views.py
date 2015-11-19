@@ -73,3 +73,22 @@ class ProntuarioDetailView(LoginRequiredMixin,DetailView):
         detalhes = super(ProntuarioDetailView, self)
         
         return detalhes         
+
+
+
+#def PrintView(request,pk):
+
+ #       pk= request.POST.get('pk')
+  #      detalhes = Prontuario.objects.filter(codigo_Prontuario =pk )
+        
+   #     return render(request, 'prontuarios/prontuario_print.html', {'detalhes': detalhes,'pk':pk})         
+
+
+class PrintView(LoginRequiredMixin,DetailView):
+
+    model = Prontuario
+    template_name = "prontuarios/prontuario_print.html"
+    def Print(self, **kwargs):
+        detalhes = super(PrintView, self)
+        
+        return detalhes   

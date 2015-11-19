@@ -10,6 +10,7 @@ urlpatterns = [
 		url(r'edit/(?P<pk>\d+)$', views.ProntuarioUpdate.as_view(), name='Prontuario_update'),
     	url(r'delete/(?P<pk>\d+)$', views.ProntuarioDelete.as_view(), name='Prontuario_delete'),
     	url(r'detail/(?P<pk>[-\w]+)/$', ProntuarioDetailView.as_view(), name='Prontuario-detail'),
+    	url(r'print/(?P<pk>[-\w]+)/$', views.PrintView.as_view(),name='print'),
     	
 
 ]
