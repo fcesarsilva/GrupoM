@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+
+
+ <div class="hero-unit" >
+
+ 
+
+
+
+
+
+   
+        
+        
+        <hr size="10">  
+        <p><strong>Historico: </strong></p> 
+
+
+
+        <table class="table table-striped">
+
+        <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Data</th>
+                  <th>Usuario</th>
+                  <th>Tipo de Modificação</th>
+                </tr>
+              </thead>
+        <tbody>
+
+
+        {% for history in object.history.all %}
+        <tr>
+        <td><p>{{history.history_id}}</p></td>
+        <td><p>{{history.history_date}}</p></td>
+        <td><p>{{history.history_user}}</p></td>
+
+        {% if history.history_type = '+'%}
+        <td><p>Criação</p></td>
+        {% endif %}
+
+        {% if history.history_type = '~'%}
+        <td><p>Modificãos</p></td>
+        {% endif %}
+        
+        </tr>
+        {% endfor %} 
+
+
+
+
+        <tbody>
+    </table>
+        <hr size="10"> 
+
+                <a href="/prontuario/detail/{{prontuario.codigo_Prontuario}}" ><button class="btn">Voltar</button></a>
+  </div>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+     {% endblock content %} 

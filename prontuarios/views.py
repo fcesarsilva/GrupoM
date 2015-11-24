@@ -76,12 +76,6 @@ class ProntuarioDetailView(LoginRequiredMixin,DetailView):
 
 
 
-#def PrintView(request,pk):
-
- #       pk= request.POST.get('pk')
-  #      detalhes = Prontuario.objects.filter(codigo_Prontuario =pk )
-        
-   #     return render(request, 'prontuarios/prontuario_print.html', {'detalhes': detalhes,'pk':pk})         
 
 
 class PrintView(LoginRequiredMixin,DetailView):
@@ -92,3 +86,14 @@ class PrintView(LoginRequiredMixin,DetailView):
         detalhes = super(PrintView, self)
         
         return detalhes   
+
+
+
+class HistoricoView(LoginRequiredMixin,DetailView):
+
+    model = Prontuario
+    template_name = "prontuarios/prontuario_historico.html"
+    def Print(self, **kwargs):
+        detalhes = super(PrintView, self)
+        
+        return detalhes         

@@ -11,6 +11,7 @@ urlpatterns = [
     	url(r'delete/(?P<pk>\d+)$', views.ProntuarioDelete.as_view(), name='Prontuario_delete'),
     	url(r'detail/(?P<pk>[-\w]+)/$', ProntuarioDetailView.as_view(), name='Prontuario-detail'),
     	url(r'print/(?P<pk>[-\w]+)/$', views.PrintView.as_view(),name='print'),
+    	url(r'historico/(?P<pk>[-\w]+)/$', views.HistoricoView.as_view(),name='historico'),
     	
 
 ]
