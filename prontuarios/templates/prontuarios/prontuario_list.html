@@ -27,7 +27,9 @@
                   <th>Nome do Paciente</th>
                   <th>Imprimir</th>
                   <th>Editar</th>
+                  {% if perms.prontuarios.delete_prontuario%}
                   <th>Excluir</th>
+                  {% endif %}
                 </tr>
               </thead>
  <tbody>
@@ -40,7 +42,9 @@
 <td><a href="/inicio/detail/{{prontuario.paciente.pk}}">{{ prontuario.paciente.nome}}</td>
 <td><a href="/prontuario/print/{{prontuario.codigo_Prontuario}}" target="_blank"><i class="icon-print"></i></td></a>
 <td><a href="/prontuario/edit/{{prontuario.codigo_Prontuario}}"><i class="icon-edit"></i></td></a>
+{% if perms.prontuarios.delete_prontuario%}
 <td> <a  href="/prontuario/delete/{{prontuario.codigo_Prontuario}}" class="icon-remove"></i></a></td>
+{% endif %}
 </tr>
 {% endfor %}
 <tbody>
