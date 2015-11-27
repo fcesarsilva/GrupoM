@@ -58,7 +58,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paciente<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                 {% if perms.atendimentos.add_paciente%}
-                  <li><a href="/inicio/cadastro">Novo Paciente</a></li>
+                  <li><a data-target="#" href="/inicio/cadastro">Novo Paciente</a></li>
                   <li class="divider"></li>
                   {% endif %}
                   <li><a href="/inicio/lista">Lista de Pacientes</a></li>

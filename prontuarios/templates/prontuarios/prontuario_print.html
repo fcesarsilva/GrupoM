@@ -2,12 +2,26 @@
 <html>
   <head>
     <title>Imprimir Prontuario</title>
+
+   <link href="http://globocom.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+   <link href="http://globocom.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
    
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+     hr {
+      color:black;
+      background-color: #000;
+      height: 3px;
+    }
+
+    
+    </style>  
+    <style>table#alter tr.dif td {background:#EEEEEE;}</style>
+  
+
   </head>
   <body>
 
-<div class="container">
 
 
  <div class="hero-unit" >
@@ -19,18 +33,52 @@
 
 
    <div class="page-header">
-     <h1>Prontuario Eletronico</h1>
+     <h3 style="text-align:center;">Prontuario Eletronico</h3>
    </div>
-        <hr size="1"> 
-        <p><strong>Codigo do Prontuario: </strong>{{ object.codigo_Prontuario}}</p>  
-        <p><strong>Data da Consulta: </strong>{{ object.data_Consulta}}</p> 
-        <hr size="1"> 
-        <p><strong>Nome Do Pacientes: </strong>{{ object.paciente.nome }}</p>            
+
+
+      
+      <table class="table table-bordered" border="5px" >
+              <thead>
+                <tr>
+                  <th colspan="4"><p><strong>Codigo do Prontuario: </strong>{{ object.codigo_Prontuario}}</p> </th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="4"; align:"center"><center>ETIQUETA DE IDENTIFICAÇÃO <br></br> DO PACIENTE</center></td>
+                  <td><p><strong>Nome:</strong> {{ object.paciente.nome }}</p> </td>
+                  <td colspan="2"><strong>Data de Nascimento:</strong> {{ object.paciente.data_Nascimento}} </td>
+                </tr>
+                <tr>
+                  <td><strong>Nome da Mãe:</strong></td>
+                  <td colspan="2"><strong>Atend:</strong></td>
+                </tr>
+                <tr>
+                  <td><p><strong>Data da Consulta:</strong> {{ object.data_Consulta}}</p></td>
+                  <td><strong>Setor:</strong></td>
+                  <td><strong>Leito:</strong></td>
+                  
+                </tr>
+                <tr>
+                  
+                  <td colspan="3"><strong>Diagnóstico:</strong> </td>
+                 
+                </tr>
+              </tbody>
+            </table>
+
+
+                 
+        
+        <hr size="1">  
+                    
         <p><strong>CPF: </strong>{{ object.paciente.cpf }}</p> 
         <p><strong>Numero do Cartão SUS: </strong>{{ object.paciente.cartao_SUS }}</p> 
         <p><strong>Queixa Relatada: </strong>{{ object.paciente.queixaPrincipal }}</p> 
         
-        <hr size="10"> 
+        <hr size="1"> 
         
         {% for medico in object.medico.all %}
         <p><strong>Medico: </strong>{{medico.nome}}</p>  
@@ -39,12 +87,15 @@
         {% endfor %} 
         
         
-        <hr size="10">  
-        <p><strong>Remedios: </strong></p> 
+        <hr size="1">  
+        <p><strong>Medicamento: </strong></p> 
         {% for remedio in object.remedio.all %}
         <p>{{remedio.descricao_Medicamento}}</p>
         {% endfor %} 
-        <hr size="10"> 
+        <hr size="1"> 
+
+
+
 
                 
   </div>  
@@ -59,9 +110,21 @@
 
 
 
+    <script src="http://globocom.github.io/bootstrap/assets/js/jquery.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-alert.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-modal.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-tab.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-popover.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-button.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://globocom.github.io/bootstrap/assets/js/bootstrap-typeahead.js"></script>
 
-
-         <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    
   </body>
 </html>
