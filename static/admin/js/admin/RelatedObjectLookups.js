@@ -36,8 +36,7 @@ function showAdminPopup(triggeringLink, name_regexp) {
     } else {
         href  += '&_popup=1';
     }
-    // GRAPPELLI CUSTOM: changed width
-    var win = window.open(href, name, 'height=500,width=1000,resizable=yes,scrollbars=yes');
+    var win = window.open(href, name, 'height=500,width=800,resizable=yes,scrollbars=yes');
     win.focus();
     return false;
 }
@@ -54,8 +53,6 @@ function dismissRelatedLookupPopup(win, chosenId) {
     } else {
         document.getElementById(name).value = chosenId;
     }
-    // GRAPPELLI CUSTOM: element focus
-    elem.focus();
     win.close();
 }
 
@@ -63,8 +60,7 @@ function showRelatedObjectPopup(triggeringLink) {
     var name = triggeringLink.id.replace(/^(change|add|delete)_/, '');
     name = id_to_windowname(name);
     var href = triggeringLink.href;
-    // GRAPPELLI CUSTOM: changed width
-    var win = window.open(href, name, 'height=500,width=1000,resizable=yes,scrollbars=yes');
+    var win = window.open(href, name, 'height=500,width=800,resizable=yes,scrollbars=yes');
     win.focus();
     return false;
 }
@@ -89,11 +85,9 @@ function dismissAddRelatedObjectPopup(win, newId, newRepr) {
             } else {
                 elem.value = newId;
             }
-            // GRAPPELLI CUSTOM: element focus
-            elem.focus();
         }
         // Trigger a change event to update related links if required.
-        grp.jQuery(elem).trigger('change');
+        django.jQuery(elem).trigger('change');
     } else {
         var toId = name + "_to";
         o = new Option(newRepr, newId);
@@ -103,28 +97,18 @@ function dismissAddRelatedObjectPopup(win, newId, newRepr) {
     win.close();
 }
 
-// GRAPPELLI CUSTOM
-function removeRelatedObject(triggeringLink) {
-    var id = triggeringLink.id.replace(/^remove_/, '');
-    var elem = document.getElementById(id);
-    elem.value = "";
-    elem.focus();
-}
-
 function dismissChangeRelatedObjectPopup(win, objId, newRepr, newId) {
     objId = html_unescape(objId);
     newRepr = html_unescape(newRepr);
     var id = windowname_to_id(win.name).replace(/^edit_/, '');
     var selectsSelector = interpolate('#%s, #%s_from, #%s_to', [id, id, id]);
-    var selects = grp.jQuery(selectsSelector);
+    var selects = django.jQuery(selectsSelector);
     selects.find('option').each(function() {
         if (this.value == objId) {
             this.innerHTML = newRepr;
             this.value = newId;
         }
     });
-    // GRAPPELLI CUSTOM: element focus
-    elem.focus();
     win.close();
 };
 
@@ -132,14 +116,12 @@ function dismissDeleteRelatedObjectPopup(win, objId) {
     objId = html_unescape(objId);
     var id = windowname_to_id(win.name).replace(/^delete_/, '');
     var selectsSelector = interpolate('#%s, #%s_from, #%s_to', [id, id, id]);
-    var selects = grp.jQuery(selectsSelector);
+    var selects = django.jQuery(selectsSelector);
     selects.find('option').each(function() {
         if (this.value == objId) {
-            grp.jQuery(this).remove();
+            django.jQuery(this).remove();
         }
     }).trigger('change');
-    // GRAPPELLI CUSTOM: element focus
-    elem.focus();
     win.close();
 };
 
